@@ -42,3 +42,5 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=password
+      - GF_SERVER_ROOT_URL=https://<host>/<application>
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
