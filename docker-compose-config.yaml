@@ -4,6 +4,9 @@ monitor:
   - illuminanceMeasurement
   - relativeHumidityMeasurement
   - ultravioletIndex
+  - battery
+  - thermostatOperatingState
+  - powerMeter
 period: 120
 influxurl: http://influxdb:8086
 influxuser: admin
