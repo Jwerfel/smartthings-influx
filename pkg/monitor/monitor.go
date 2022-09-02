@@ -96,6 +96,20 @@ func (mon Monitor) Run() error {
 					continue
 				}
 
+				v := 0.0
+				if key == "thermostatOperatingState" {
+					log.Printf("component is thermostatOperatingState")
+					if inner["value"] == "cooling" {
+						v = -1.0
+					} else if inner["value"] == "heating" {
+						v = 1.0
+					} else {
+						v = 0.0
+					}
+				} else {
+					v = inner["value"].(float64)
+				}
+
 				// Create point
 				point, err := client.NewPoint(
 					key,
@@ -105,7 +119,8 @@ func (mon Monitor) Run() error {
 						"capability": dev.capability,
 					},
 					map[string]interface{}{
-						"value": inner["value"].(float64),
+						//"value": inner["value"].(float64),
+						"value": v,
 					},
 					t,
 				)
